@@ -1,0 +1,1032 @@
+<!DOCTYPE html><html lang="en" class="pair-playfair density-comfortable" style="--accent: #a6761d;"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aarya Kshetri — Data Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;family=Caveat:wght@400;500;600;700&amp;family=Dancing+Script:wght@400;500;600;700&amp;family=Fraunces:ital,wght@0,300..700;1,300..700&amp;family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;family=Work+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --bg: #f4f2ed;
+    --ink: #111111;
+    --ink-2: #1a1a1a;
+    --muted: #6b6b6b;
+    --muted-2: #8a8a8a;
+    --rule: #111111;
+    --rule-soft: rgba(17,17,17,0.14);
+    --rule-hair: rgba(17,17,17,0.08);
+    --accent: #5a6b52; /* muted olive */
+    --sans: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --serif: 'Instrument Serif', 'Times New Roman', serif;
+
+    --pad-x: 40px;
+    --pad-y: 40px;
+    --row-gap: 96px;
+    --grid-gap: 24px;
+  }
+  html.density-compact {
+    --pad-x: 32px;
+    --pad-y: 28px;
+    --row-gap: 64px;
+    --grid-gap: 20px;
+  }
+  html.density-comfortable {
+    --pad-x: 48px;
+    --pad-y: 56px;
+    --row-gap: 128px;
+    --grid-gap: 28px;
+  }
+
+  html.pair-inter { --sans: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace; }
+  html.pair-plex  { --sans: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; --mono: 'IBM Plex Mono', ui-monospace, monospace; }
+  html.pair-grotesk { --sans: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; --mono: 'Space Mono', ui-monospace, monospace; }
+  html.pair-helvetica { --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace; }
+  html.pair-neue { --sans: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Arial, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace; }
+  html.pair-editorial { --sans: 'Fraunces', 'Times New Roman', serif; --mono: 'JetBrains Mono', ui-monospace, monospace; --serif: 'Fraunces', serif; }
+  html.pair-mono { --sans: 'JetBrains Mono', ui-monospace, monospace; --mono: 'JetBrains Mono', ui-monospace, monospace; }
+  html.pair-interserif { --sans: 'Inter Tight', Arial, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace; --serif: 'Fraunces', serif; }
+  html.pair-playfair { --sans: 'Work Sans', 'Helvetica Neue', Arial, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace; --serif: 'Playfair Display', serif; }
+  html.pair-geist { --sans: 'Geist', 'Helvetica Neue', Arial, sans-serif; --mono: 'Geist Mono', ui-monospace, monospace; }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: var(--sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  ::selection { background: var(--accent); color: #fff; }
+
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+
+  .page { max-width: 1440px; margin: 0 auto; padding: var(--pad-y) var(--pad-x) 0; }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: var(--grid-gap);
+    align-items: baseline;
+    padding-bottom: 20px;
+  }
+  .mark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--sans);
+    position: relative;
+    padding: 4px 2px 8px;
+  }
+  .mark .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    align-self: center;
+    position: relative;
+    flex-shrink: 0;
+    animation: markPulse 3.2s ease-in-out infinite;
+  }
+  .mark .dot::before {
+    content: "";
+    position: absolute; inset: -5px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    opacity: 0;
+    animation: markHalo 3.2s ease-out infinite;
+  }
+  @keyframes markPulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50%     { transform: scale(1.2); opacity: 0.85; }
+  }
+  @keyframes markHalo {
+    0%   { transform: scale(0.5); opacity: 0.9; }
+    80%  { transform: scale(2.4); opacity: 0; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  .mark .name {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.3em;
+    position: relative;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 0.9;
+    letter-spacing: 0.005em;
+    color: var(--ink);
+    padding: 0 0.1em 4px 0.1em;
+  }
+
+  /* each word */
+  .mark .w {
+    display: inline-flex;
+    position: relative;
+  }
+  .mark .w .ch {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.35em) rotate(-3deg);
+    animation: markCharIn 0.7s cubic-bezier(.22,.9,.3,1.1) forwards;
+    transform-origin: 50% 90%;
+  }
+  @keyframes markCharIn {
+    to { opacity: 1; transform: translateY(0) rotate(0); }
+  }
+
+  /* "Aarya" — same handwriting, slightly heavier */
+  .mark .w1 {
+    font-style: normal;
+    font-weight: 600;
+  }
+  .mark .w1 .ch:first-child {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* "Kshetri" — same handwriting, regular weight */
+  .mark .w2 {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* twirl flourish under the name */
+  .mark .twirl {
+    position: absolute;
+    left: 0;
+    right: -28px; /* allow ribbon tail to extend past the last letter */
+    bottom: -14px;
+    height: 26px;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .mark .twirl path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 340;
+    stroke-dashoffset: 340;
+  }
+  .mark.is-loaded .twirl path {
+    animation: markTwirl 1.6s 0.55s cubic-bezier(.55,.08,.2,1) forwards;
+  }
+  @keyframes markTwirl {
+    to { stroke-dashoffset: 0; }
+  }
+  .mark:hover .twirl path {
+    stroke-width: 1.9;
+    transition: stroke-width .25s ease;
+  }
+
+  /* hover: gentle lift */
+  .mark:hover .w1 .ch:first-child {
+    transform: translateY(-1px) rotate(-3deg);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .mark .w1 .ch:first-child { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .topbar .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .topbar .meta b { color: var(--ink); font-weight: 500; }
+  .topbar nav {
+    justify-self: end;
+    display: flex;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .topbar nav a {
+    color: var(--muted);
+    transition: color .2s ease;
+  }
+  .topbar nav a:hover { color: var(--ink); }
+  .topbar nav a .num {
+    color: var(--muted-2);
+    margin-right: 6px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding-top: 28px;
+    padding-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+    position: relative;
+  }
+  html.density-compact .hero { padding-top: 18px; }
+  html.density-comfortable .hero { padding-top: 44px; }
+
+  .hero .eyebrow {
+    grid-column: 1 / span 3;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .hero .eyebrow .idx { color: var(--accent); font-weight: 500; }
+
+
+
+
+  .hero .title {
+    grid-column: 1 / span 12;
+    text-align: left;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(36px, 5.6vw, 136px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .hero .title .line2 {
+    display: block;
+    font-style: normal;
+    color: var(--ink);
+  }
+  .hero .title .and {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+    padding: 0 0.02em;
+  }
+
+  .hero .sub-row {
+    margin-top: 56px;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+    padding-top: 20px;
+  }
+  html.density-compact .hero .sub-row { margin-top: 36px; }
+
+  .hero .role {
+    grid-column: 1 / span 3;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hero .role b { color: var(--ink); font-weight: 500; display: block; margin-bottom: 2px; }
+
+  .hero .bio {
+    grid-column: 4 / span 9;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 60ch;
+    letter-spacing: -0.005em;
+  }
+  html.density-compact .hero .bio { font-size: 15px; }
+
+  .hero .stats {
+    grid-column: 10 / span 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+    align-self: start;
+  }
+  .stat {
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 10px;
+  }
+  .stat .n {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat .l {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section { padding-top: var(--row-gap); scroll-margin-top: 40px; }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+    padding-bottom: 24px;
+    align-items: baseline;
+  }
+  .sec-head .num {
+    grid-column: 1 / span 3;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .sec-head .num b { color: var(--accent); font-weight: 500; margin-right: 8px; }
+  .sec-head h2 {
+    grid-column: 4 / span 6;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(28px, 3.4vw, 44px);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin: 0;
+  }
+  .sec-head .aside {
+    grid-column: 10 / span 3;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    justify-self: end;
+    text-align: right;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills {
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+  }
+  .skill-col {
+    grid-column: span 3;
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 16px;
+  }
+  .skill-col .head {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .skill-col .head .idx { color: var(--accent); }
+  .skill-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .skill-col li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule-hair);
+    font-size: 15px;
+    letter-spacing: -0.005em;
+  }
+  .skill-col li:last-child { border-bottom: 0; }
+  .skill-col li .bar {
+    width: 56px;
+    height: 2px;
+    background: var(--rule-hair);
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-col li .bar i {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: var(--accent);
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
+  }
+  .skills.in-view .skill-col li .bar i { transform: scaleX(var(--lvl)); }
+
+  /* ---------- CONTACT ---------- */
+  .contact-block {
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+  }
+  .contact-big {
+    grid-column: 1 / span 9;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(36px, 5.6vw, 92px);
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .contact-big .ital {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .contact-big a {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .contact-big a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.08em;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(1);
+    transform-origin: left center;
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .contact-big a:hover::after { transform: scaleX(0); transform-origin: right center; }
+
+  .contact-aside {
+    grid-column: 10 / span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    align-self: end;
+  }
+  .contact-aside .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+  }
+  .contact-aside .status .pulse {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    position: relative;
+  }
+  .contact-aside .status .pulse::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    animation: pulse 2s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.6); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+
+  /* channels */
+  .channels {
+    margin-top: 72px;
+    grid-column: 1 / -1;
+  }
+  .channels a {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    transition: padding .3s cubic-bezier(.2,.8,.2,1), color .2s ease;
+  }
+  .channels a:hover { padding-left: 12px; }
+  .channels a:hover .arrow { transform: translate(6px, -6px); color: var(--accent); }
+  .channels .k {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .channels .name {
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+  .channels .handle {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .channels .arrow {
+    font-family: var(--sans);
+    font-size: 22px;
+    transition: transform .3s ease, color .2s ease;
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    margin-top: var(--row-gap);
+    padding: 28px 0 32px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    align-items: end;
+  }
+  footer .col-1 { grid-column: 1 / span 3; }
+  footer .col-2 { grid-column: 4 / span 3; }
+  footer .col-3 { grid-column: 7 / span 3; }
+  footer .col-4 { grid-column: 10 / span 3; justify-self: end; text-align: right; }
+  footer b { color: var(--ink); font-weight: 500; display: block; margin-bottom: 4px; }
+
+  /* ---------- Tweaks panel ---------- */
+  .tweaks {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 280px;
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    z-index: 50;
+    display: none;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.2);
+  }
+  .tweaks.on { display: block; }
+  .tweaks h4 {
+    margin: 0 0 14px;
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tweaks h4 .tag {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 3px 6px;
+    font-size: 9px;
+  }
+  .tweaks .group + .group { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule-hair); }
+  .tweaks .lbl { display: block; margin-bottom: 8px; color: var(--muted); }
+  .tweaks .row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tweaks .chip {
+    border: 1px solid var(--rule-soft);
+    padding: 6px 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    background: transparent;
+    cursor: pointer;
+    transition: all .15s ease;
+    text-transform: uppercase;
+  }
+  .tweaks .chip:hover { border-color: var(--ink); }
+  .tweaks .chip.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .tweaks .swatch-row { display: flex; gap: 8px; }
+  .tweaks .sw {
+    width: 28px; height: 28px;
+    border: 1px solid var(--rule-soft);
+    cursor: pointer;
+    position: relative;
+  }
+  .tweaks .sw.active::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 1px solid var(--ink);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    :root { --pad-x: 20px; --pad-y: 20px; --row-gap: 64px; }
+    .topbar { grid-template-columns: 1fr 1fr; }
+    .topbar .meta.hide-sm { display: none; }
+    .topbar nav { grid-column: 1 / -1; justify-self: start; flex-wrap: wrap; gap: 14px; }
+    .hero .eyebrow, .hero .title { grid-column: 1 / -1; }
+    .hero .role, .hero .bio, .hero .stats { grid-column: 1 / -1; }
+    .sec-head .num, .sec-head h2, .sec-head .aside { grid-column: 1 / -1; text-align: left; justify-self: start; }
+    .skill-col { grid-column: span 6; }
+    .contact-big, .contact-aside { grid-column: 1 / -1; }
+    .channels a { grid-template-columns: 1fr auto; }
+    .channels .k, .channels .handle { display: none; }
+    footer > * { grid-column: 1 / -1 !important; text-align: left !important; justify-self: start !important; }
+  }
+</style>
+</head>
+<body data-cc-id="cc-1" style="background-color: rgb(255, 254, 250); font-size: 25px; cursor: crosshair;">
+
+<script>
+  // --- EDIT MODE / TWEAKS ---
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "forest",
+    "pair": "playfair",
+    "density": "compact"
+  }/*EDITMODE-END*/;
+
+  const ACCENTS = {
+    olive:    "#5a6b52",
+    rust:     "#9a4a2c",
+    ink:      "#111111",
+    cobalt:   "#2f4a7a",
+    plum:     "#6a3d5e",
+    amber:    "#a6761d",
+    forest:   "#2f5d3a",
+    teal:     "#2d6a6a",
+    crimson:  "#8a2a33",
+    navy:     "#1b2a4e",
+    slate:    "#415464",
+    copper:   "#b86b3a",
+    sand:     "#8a7a4a",
+    violet:   "#4a3d7a"
+  };
+
+  function applyTweaks(t) {
+    const root = document.documentElement;
+    // pair
+    root.classList.remove("pair-inter","pair-plex","pair-grotesk","pair-helvetica","pair-neue","pair-editorial","pair-mono","pair-interserif","pair-playfair","pair-geist");
+    root.classList.add("pair-" + (t.pair || "inter"));
+    // density
+    root.classList.remove("density-compact","density-default","density-comfortable");
+    root.classList.add("density-" + (t.density || "default"));
+    // accent
+    root.style.setProperty("--accent", ACCENTS[t.accent] || ACCENTS.olive);
+  }
+  window.__tweakState = { ...TWEAK_DEFAULTS };
+  applyTweaks(window.__tweakState);
+
+  function setTweak(k, v) {
+    window.__tweakState = { ...window.__tweakState, [k]: v };
+    applyTweaks(window.__tweakState);
+    try {
+      window.parent.postMessage({ type: "__edit_mode_set_keys", edits: { [k]: v } }, "*");
+    } catch(e) {}
+    renderTweaks();
+  }
+
+  function renderTweaks() {
+    const el = document.getElementById("tweaks");
+    if (!el) return;
+    const t = window.__tweakState;
+    el.innerHTML = `
+      <h4>Tweaks <span class="tag">LIVE</span></h4>
+      <div class="group">
+        <span class="lbl">Accent</span>
+        <div class="swatch-row">
+          ${Object.entries(ACCENTS).map(([k,v]) => `
+            <button class="sw ${t.accent===k?'active':''}" data-accent="${k}" style="background:${v}" title="${k}"></button>
+          `).join("")}
+        </div>
+      </div>
+      <div class="group">
+        <span class="lbl">Font pairing</span>
+        <div class="row">
+          ${[
+            ["inter","Inter Tight / JetBrains"],
+            ["helvetica","Helvetica / JetBrains"],
+            ["neue","Neue Haas / JetBrains"],
+            ["plex","IBM Plex"],
+            ["grotesk","Space Grotesk / Mono"],
+            ["geist","Geist / Geist Mono"],
+            ["playfair","Work Sans / Playfair"],
+            ["editorial","Fraunces (editorial)"],
+            ["interserif","Inter + Fraunces"],
+            ["mono","JetBrains (mono-only)"]
+          ].map(([k,label])=>`
+            <button class="chip ${t.pair===k?'active':''}" data-pair="${k}"${k==='inter'?' style="font-family: Poppins"':''}>${label}</button>
+          `).join("")}
+        </div>
+      </div>
+      <div class="group">
+        <span class="lbl">Density</span>
+        <div class="row">
+          ${["compact","default","comfortable"].map(k=>`
+            <button class="chip ${t.density===k?'active':''}" data-density="${k}">${k}</button>
+          `).join("")}
+        </div>
+      </div>
+    `;
+    el.querySelectorAll("[data-accent]").forEach(b => b.onclick = () => setTweak("accent", b.dataset.accent));
+    el.querySelectorAll("[data-pair]").forEach(b => b.onclick = () => setTweak("pair", b.dataset.pair));
+    el.querySelectorAll("[data-density]").forEach(b => b.onclick = () => setTweak("density", b.dataset.density));
+  }
+
+  window.addEventListener("message", (e) => {
+    const d = e.data || {};
+    if (d.type === "__activate_edit_mode") {
+      document.getElementById("tweaks").classList.add("on");
+      renderTweaks();
+    } else if (d.type === "__deactivate_edit_mode") {
+      document.getElementById("tweaks").classList.remove("on");
+    }
+  });
+  try { window.parent.postMessage({ type: "__edit_mode_available" }, "*"); } catch(e) {}
+</script>
+
+<div class="page" data-cc-id="cc-4">
+
+  <!-- TOP BAR -->
+  <header class="topbar" data-cc-id="cc-20">
+    <a href="#about" class="mark is-loaded" id="mark" aria-label="Aarya Kshetri" style="font-family: &quot;Dancing Script&quot;" data-cc-id="cc-16"><span class="dot" data-cc-id="cc-17"></span><span class="name" data-cc-id="cc-15"><span class="w w1" data-text="Aarya"><span class="ch" style="animation-delay: 0s;">A</span><span class="ch" style="animation-delay: 0.05s;">a</span><span class="ch" style="animation-delay: 0.1s;">r</span><span class="ch" style="animation-delay: 0.15s;">y</span><span class="ch" style="animation-delay: 0.2s;">a</span></span><span class="w w2" data-text="Kshetri"><span class="ch" style="animation-delay: 0.32s;">K</span><span class="ch" style="animation-delay: 0.37s;">s</span><span class="ch" style="animation-delay: 0.42s;">h</span><span class="ch" style="animation-delay: 0.47s;">e</span><span class="ch" style="animation-delay: 0.52s;">t</span><span class="ch" style="animation-delay: 0.57s;">r</span><span class="ch" style="animation-delay: 0.62s;">i</span></span><svg class="twirl" viewBox="0 0 240 28" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 14 C 30 6, 70 20, 110 12 S 180 6, 200 12 c 8 2, 12 8, 6 12 c -5 3.5, -11 -1, -8 -6 c 2.5 -4, 9 -3, 14 1 c 6 4.5, 14 3, 18 -2"></path></svg></span></a>
+    <div class="meta hide-sm"><b>Data Scientist</b> / ML Systems</div>
+    <div class="meta hide-sm">Based in <b>New York — EDT</b></div>
+    <nav>
+      <a href="#about"><span class="num">01</span>About</a>
+      <a href="#skills" data-cc-id="cc-23"><span class="num">02</span>Skills</a>
+      <a href="#contact" data-cc-id="cc-21"><span class="num" data-cc-id="cc-22">03</span>Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="about" data-screen-label="01 Hero">
+    <div class="eyebrow"><span class="idx">001</span><span>Portfolio · 2026</span></div>
+
+    <h1 class="title">
+      I love designing 
+      <span class="line2"><span class="and">systems</span> that actually</span> understand <span class="and">data.</span>
+      <span class="line2"> And make lives easier.</span>
+    </h1>
+
+    <div class="sub-row">
+      <div class="role">
+        <b>Aarya Kshetri</b>
+        Data Scientist — 5+ yrs
+      </div>
+      <p class="bio">
+        I design and ship end-to-end data and ML systems for enterprise analytics — distributed pipelines, semantic search, and production model development across high-volume structured and unstructured data. I care about the unglamorous edges: orchestration, cost, latency, and the line between a notebook and a production service.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" data-screen-label="02 Skills">
+    <div class="sec-head">
+      <div class="num"><b>02</b> Stack</div>
+      <h2>Skills &amp; tools.</h2>
+      <div class="aside">A working set, not a<br>checklist of everything.</div>
+    </div>
+
+    <div class="skills in-view" id="skills-grid">
+      <div class="skill-col">
+        <div class="head"><span>Languages &amp; Modelling</span><span class="idx">A</span></div>
+        <ul>
+          <li>Python <span class="bar"><i style="--lvl:0.98"></i></span></li>
+          <li>SQL (PostgreSQL, BigQuery) <span class="bar"><i style="--lvl:0.95"></i></span></li>
+          <li>PyTorch <span class="bar"><i style="--lvl:0.9"></i></span></li>
+          <li>scikit-learn <span class="bar"><i style="--lvl:0.92"></i></span></li>
+	  <li>TensorFlow <span class="bar"><i style="--lvl:0.92"></i></span></li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <div class="head"><span>Data &amp; Distributed</span><span class="idx">B</span></div>
+        <ul>
+          <li>Spark &amp; Databricks <span class="bar"><i style="--lvl:0.9"></i></span></li>
+          <li>Hive <span class="bar"><i style="--lvl:0.82"></i></span></li>
+          <li>Airflow / Dagster <span class="bar"><i style="--lvl:0.88"></i></span></li>
+          <li>dbt <span class="bar"><i style="--lvl:0.75"></i></span></li>
+          <li>Snowflake / BigQuery <span class="bar"><i style="--lvl:0.85"></i></span></li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <div class="head"><span>ML &amp; Retrieval</span><span class="idx">C</span></div>
+        <ul>
+          <li>Transformers / LLMs <span class="bar"><i style="--lvl:0.88"></i></span></li>
+          <li>Semantic search <span class="bar"><i style="--lvl:0.94"></i></span></li>
+          <li>Context-Aware Retrieval <span class="bar"><i style="--lvl:0.9"></i></span></li>
+          <li>RAG &amp; re-ranking <span class="bar"><i style="--lvl:0.88"></i></span></li>
+          <li>MLflow / W&amp;B <span class="bar"><i style="--lvl:0.82"></i></span></li>
+          <li>Causal &amp; experimentation <span class="bar"><i style="--lvl:0.72"></i></span></li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <div class="head"><span>Cloud &amp; Platform</span><span class="idx">D</span></div>
+        <ul>
+          <li>AWS (S3, Redis, ECS, Sagemaker) <span class="bar"><i style="--lvl:0.9"></i></span></li>
+          <li>GCP (BigQuery, Vertex) <span class="bar"><i style="--lvl:0.78"></i></span></li>
+          <li>Docker &amp; Kubernetes <span class="bar"><i style="--lvl:0.82"></i></span></li>
+          <li>FastAPI<span class="bar"><i style="--lvl:0.85"></i></span></li>
+          <li>CI/CD <span class="bar"><i style="--lvl:0.8"></i></span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-screen-label="03 Contact">
+    <div class="sec-head">
+      <div class="num"><b>03</b> Get in touch</div>
+      <h2>Contact.</h2>
+      <div class="aside">Open to senior IC<br>and staff-level roles.</div>
+    </div>
+
+    <div class="contact-block">
+      <h3 class="contact-big">
+Drop me a <a href="mailto:aarya.kshetri97@gmail.com">line</a> if you’re building <span class="ital">something cool</span> or looking for a new perspective on your <span class="ital">data stack.</span>
+      </h3>
+      <div class="contact-aside">
+        <div class="status"><span class="pulse"></span>Available — Q3 2026</div>
+        <div>
+          <div style="color:var(--muted);">Response</div>
+          <div style="color:var(--ink); margin-top:4px;">Usually &lt; 24h</div>
+        </div>
+        <div>
+          <div style="color:var(--muted);">Timezone</div>
+          <div style="color:var(--ink); margin-top:4px;" id="local-time">EDT 21:19:05 — UTC−4</div>
+        </div>
+      </div>
+
+      <nav class="channels">
+        <a href="mailto:aarya.kshetri97@gmail.com">
+          <span class="k">EML / 01</span>
+          <span class="name">Email</span>
+          <span class="handle">aarya.kshetri97@gmail.com</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="https://github.com/aaryakshetri" target="_blank" rel="noopener">
+          <span class="k">GIT / 02</span>
+          <span class="name">GitHub</span>
+          <span class="handle">github.com/aaryakshetri</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/akshetri/">
+          <span class="k">LNK / 03</span>
+          <span class="name">LinkedIn</span>
+          <span class="handle">https://www.linkedin.com/in/akshetri/</span>
+          <span class="arrow">↗</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="col-1"><b>Aarya Kshetri</b>Data Scientist · ML Systems</div>
+    <div class="col-2"><b>Colophon</b>Set in Inter Tight<br>&amp; JetBrains Mono</div>
+    <div class="col-3"><b>Last updated</b><span id="updated">April 2026</span></div>
+    <div class="col-4"><b>Made with Claude Design © 2026</b>All rights reserved</div>
+  </footer>
+</div>
+
+<!-- TWEAKS PANEL -->
+<aside class="tweaks" id="tweaks" aria-label="Tweaks" data-cc-id="cc-24">
+      <h4>Tweaks <span class="tag">LIVE</span></h4>
+      <div class="group">
+        <span class="lbl">Accent</span>
+        <div class="swatch-row">
+          
+            <button class="sw " data-accent="olive" style="background:#5a6b52" title="olive"></button>
+          
+            <button class="sw " data-accent="rust" style="background:#9a4a2c" title="rust"></button>
+          
+            <button class="sw " data-accent="ink" style="background:#111111" title="ink"></button>
+          
+            <button class="sw " data-accent="cobalt" style="background:#2f4a7a" title="cobalt"></button>
+          
+            <button class="sw " data-accent="plum" style="background:#6a3d5e" title="plum"></button>
+          
+            <button class="sw active" data-accent="amber" style="background:#a6761d" title="amber"></button>
+          
+            <button class="sw " data-accent="forest" style="background:#2f5d3a" title="forest"></button>
+          
+            <button class="sw " data-accent="teal" style="background:#2d6a6a" title="teal"></button>
+          
+            <button class="sw " data-accent="crimson" style="background:#8a2a33" title="crimson"></button>
+          
+            <button class="sw " data-accent="navy" style="background:#1b2a4e" title="navy"></button>
+          
+            <button class="sw " data-accent="slate" style="background:#415464" title="slate"></button>
+          
+            <button class="sw " data-accent="copper" style="background:#b86b3a" title="copper"></button>
+          
+            <button class="sw " data-accent="sand" style="background:#8a7a4a" title="sand"></button>
+          
+            <button class="sw " data-accent="violet" style="background:#4a3d7a" title="violet"></button>
+          
+        </div>
+      </div>
+      <div class="group">
+        <span class="lbl">Font pairing</span>
+        <div class="row">
+          
+            <button class="chip " data-pair="inter" style="font-family: Poppins">Inter Tight / JetBrains</button>
+          
+            <button class="chip " data-pair="helvetica">Helvetica / JetBrains</button>
+          
+            <button class="chip " data-pair="neue">Neue Haas / JetBrains</button>
+          
+            <button class="chip " data-pair="plex">IBM Plex</button>
+          
+            <button class="chip " data-pair="grotesk">Space Grotesk / Mono</button>
+          
+            <button class="chip " data-pair="geist">Geist / Geist Mono</button>
+          
+            <button class="chip active" data-pair="playfair">Work Sans / Playfair</button>
+          
+            <button class="chip " data-pair="editorial">Fraunces (editorial)</button>
+          
+            <button class="chip " data-pair="interserif">Inter + Fraunces</button>
+          
+            <button class="chip " data-pair="mono">JetBrains (mono-only)</button>
+          
+        </div>
+      </div>
+      <div class="group">
+        <span class="lbl">Density</span>
+        <div class="row">
+          
+            <button class="chip " data-density="compact">compact</button>
+          
+            <button class="chip " data-density="default">default</button>
+          
+            <button class="chip active" data-density="comfortable">comfortable</button>
+          
+        </div>
+      </div>
+    </aside>
+
+<script>
+  // Reveal skill bars on scroll
+  const grid = document.getElementById("skills-grid");
+  if (grid) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { grid.classList.add("in-view"); io.disconnect(); }});
+    }, { threshold: 0.2 });
+    io.observe(grid);
+  }
+
+
+  // Local time ticker
+  function tickTime() {
+    const el = document.getElementById("local-time");
+    if (!el) return;
+    try {
+      const d = new Date();
+      const fmt = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "America/New_York",
+        hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false
+      }).format(d);
+      el.textContent = "EDT " + fmt + " — UTC−4";
+    } catch(e) {}
+  }
+  tickTime(); setInterval(tickTime, 1000);
+
+  // Fancy name: split words into per-character spans, then trigger entrance + underline
+  const mark = document.getElementById("mark");
+  if (mark) {
+    mark.querySelectorAll("[data-text]").forEach((w, wi) => {
+      const txt = w.getAttribute("data-text");
+      w.innerHTML = "";
+      [...txt].forEach((c, i) => {
+        const s = document.createElement("span");
+        s.className = "ch";
+        s.textContent = c;
+        // staggered, with word offset
+        s.style.animationDelay = (wi * 0.32 + i * 0.05) + "s";
+        w.appendChild(s);
+      });
+    });
+    requestAnimationFrame(() => {
+      setTimeout(() => mark.classList.add("is-loaded"), 200);
+    });
+  }
+</script>
+
+
+
+</body></html>
